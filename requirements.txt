@@ -1,0 +1,9 @@
+pandas
+seaborn
+selenium
+matplotlib
+pyarrow
+scikit-learn
+numpy
+flask
+scipy

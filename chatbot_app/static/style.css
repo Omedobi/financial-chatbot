@@ -1,0 +1,128 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background: url('https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2023/10/13075034/sl-blue-chat-bot-scaled.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    height: 100vh; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+}
+
+/*Logo*/
+.logo {
+    width: 140px; 
+    height: auto;
+    vertical-align: middle;
+    margin-right: 10px; 
+}
+
+/* Chat Container Styling */
+.chat-container {
+    max-width: 700px; 
+    width: 90%; 
+    padding: 30px; 
+    background: rgba(255, 255, 255, 0.9); 
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    text-align: justify;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 1366px) {
+    .chat-container {
+        max-width: 800px; 
+        padding: 40px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .chat-container {
+        max-width: 90%; 
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chat-container {
+        max-width: 95%; 
+        padding: 15px;
+    }
+}
+
+/* Header Styling */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Label Styling */
+label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Input and Select Field Styling */
+input, select {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Dropdown Hover and Focus Effects */
+select:focus, input:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Button Styling */
+button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Response Section Styling */
+#response {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .chat-container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    input, select, button {
+        font-size: 14px;
+    }
+}
