@@ -34,3 +34,4 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-args: '--prod --yes'
           working-directory: chatbot_app
+          github-deployment: true
