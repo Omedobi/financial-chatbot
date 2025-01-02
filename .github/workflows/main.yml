@@ -25,13 +25,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          working-directory: .
+        working-directory: .
 
       # Deploy to Vercel
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v20
         with:
-          vercel-token: ${{ secrets.BCG_CHATBOT }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-args: '--prod'
-          project-id: prj_yvWNggCzJ1D5hQZbAPlM0Apq8PBI
           working-directory: chatbot_app  
