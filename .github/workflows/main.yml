@@ -25,6 +25,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          working-directory: .
 
       # Deploy to Vercel
       - name: Deploy to Vercel
@@ -32,4 +33,4 @@ jobs:
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-args: '--prod'
-          working-directory: .
+          working-directory: ./chatbot_app
