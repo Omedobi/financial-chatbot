@@ -33,4 +33,5 @@ jobs:
         with:
           vercel-token: ${{ secrets.BCG_CHATBOT }}
           vercel-args: '--prod'
-          working-directory: ./chatbot_app
+          project-id: prj_yvWNggCzJ1D5hQZbAPlM0Apq8PBI
+          working-directory: ./chatbot_app  
