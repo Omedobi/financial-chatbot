@@ -1,7 +1,5 @@
 import pandas as pd
 import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 # Load the dataset
 final_report = pd.read_json(r'D:\Jobs\BCG GenAI\dataset\Final_report\10k_final_report.json')
