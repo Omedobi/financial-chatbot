@@ -1,6 +1,7 @@
 import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'chatbot_app')))
+import pandas as pd
 from flask import Flask, render_template, request
 from chatbot_logic import financial_chatbot
 
