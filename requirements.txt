@@ -1,8 +1,5 @@
 pandas
 seaborn
-selenium
-matplotlib
-pyarrow
 numpy
 flask
-gunicorn
+
