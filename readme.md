@@ -1,4 +1,5 @@
-![BCG-logo](chatbot_app/static/image/BCG-Logo-1.svg) **Financial Chatbot**
+![BCG-logo](chatbot_app/static/image/BCG-Logo-1.svg) 
+# **Financial Chatbot**
 
 A financial chatbot designed to provide insights from financial datasets. Built with **Flask** and **Pandas**, the chatbot answers financial questions such as revenue, profit margins, and other key financial metrics.
 
@@ -13,8 +14,6 @@ This chatbot enables users to:
 - Summarize financial performance in a human-readable format.
 
 The project leverages **Flask** for backend services and **Pandas** for data processing.
-
----
 
 ---
 
@@ -86,6 +85,7 @@ Ensure the following configuration is present:
   ],
 }
 ```
+---
 
 ## 💬 **Usage**
 
@@ -100,8 +100,6 @@ Ensure the following configuration is present:
 
 3. **Receive Insights**  
    The chatbot will process your request and provide answers based on financial datasets.
-
----
 
 ---
 
