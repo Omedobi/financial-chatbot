@@ -18,14 +18,34 @@ def query_financial_data(dataset, filters, column_name):
     column_name (str): The column to retrieve the value from.
 
     Returns:
-    str: The queried value.
+    str: The queried value or an error message.
     """
     try:
+        # Apply filters
         for key, value in filters.items():
             dataset = dataset[dataset[key] == value]
-        return dataset[column_name].values[0]
+        
+        if dataset.empty:
+            return "Data not found for the specified filters."
+        
+        # Ensure column data is numeric
+        if column_name in dataset.columns:
+            value = dataset[column_name].values[0]
+            if isinstance(value, (int, float)):
+                return value
+            else:
+                return f"Expected a numeric value in column '{column_name}', but got '{value}'."
+        else:
+            return f"Column '{column_name}' not found in the dataset."
+
     except IndexError:
         return "Data not found for the specified filters."
+    except KeyError as e:
+        return f"Invalid filter key: {e}"
+    except TypeError as e:
+        return f"Type error occurred: {e}"
+    except Exception as e:
+        return f"An unexpected error occurred: {e}"
 
 # Create a function for the chatbot logic
 def financial_chatbot(company_input, fiscal_year, user_query):
