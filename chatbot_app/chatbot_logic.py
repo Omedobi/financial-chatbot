@@ -51,50 +51,52 @@ def query_financial_data(dataset, filters, column_name):
 def financial_chatbot(company_input, fiscal_year, user_query):
     try:
         if user_query == "what is the total revenue?":
-            revenue = query_financial_data(final_report, 
-                                           {'Year': fiscal_year, 'Company': company_input}, 
-                                           'Total_revenue')
+            revenue = query_financial_data(final_report, {'Year': fiscal_year, 'Company': company_input},'Total_revenue')
             return f"The Total revenue for {company_input} for fiscal year {fiscal_year} is $ {revenue}"
         
         elif user_query == 'what is the net income?':
-            net_income = query_financial_data(final_report, 
-                                              {'Year': fiscal_year, 'Company': company_input}, 
-                                              'Net_income')
+            net_income = query_financial_data(final_report, {'Year': fiscal_year, 'Company': company_input},'Net_income')
             return f"The Net income for {company_input} for fiscal year {fiscal_year} is $ {net_income}"
         
         elif user_query == 'what is the sum of the total assets?':
-            total_assets = query_financial_data(final_report, 
-                                                {'Year': fiscal_year, 'Company': company_input}, 
-                                                'Total_assets')
+            total_assets = query_financial_data(final_report, {'Year': fiscal_year, 'Company': company_input}, 'Total_assets')
             return f"The sum of the Total assets for {company_input} for fiscal year {fiscal_year} is $ {total_assets}"
         
         elif user_query == 'what is the sum of the total liabilities?':
-            total_liabilities = query_financial_data(final_report, 
-                                                     {'Year': fiscal_year, 'Company': company_input}, 
-                                                     'Total_liabilities')
+            total_liabilities = query_financial_data(final_report, {'Year': fiscal_year, 'Company': company_input}, 'Total_liabilities')
             return f"The sum of the Total liabilities for {company_input} for fiscal year {fiscal_year} is $ {total_liabilities}"
         
         elif user_query == 'what is the cash flow from operation activities?':
-            cash_ops_flow = query_financial_data(final_report, 
-                                                 {'Year': fiscal_year, 'Company': company_input}, 
-                                                 'Cash_flow_from_operating_activities')
+            cash_ops_flow = query_financial_data(final_report, {'Year': fiscal_year, 'Company': company_input}, 'Cash_flow_from_operating_activities')
             return f"The Cash flow from operation activities for {company_input} for fiscal year {fiscal_year} is $ {cash_ops_flow}"
         
         elif user_query == 'what is the revenue growth %?':
-            revenue_growth = query_financial_data(final_report, 
-                                                  {'Year': fiscal_year, 'Company': company_input}, 
-                                                  'Revenue_growth_(%)')
-            return f"The Revenue growth % for {company_input} for fiscal year {fiscal_year} is {round(revenue_growth, 3)}%"
+            revenue_growth = query_financial_data(final_report, {'Year': fiscal_year, 'Company': company_input}, 'Revenue_growth_(%)')
+            return f"The Revenue growth % for {company_input} for fiscal year {fiscal_year} is {round(float(revenue_growth), 3)}%"
         
         elif user_query == "what is the profit margin?":
             revenue = query_financial_data(final_report, {'Year': fiscal_year, 'Company': company_input}, 'Total_revenue')
             net_income = query_financial_data(final_report, {'Year': fiscal_year, 'Company': company_input}, 'Net_income')
+            
+            revenue = float(revenue) if revenue is not None else 0
+            net_income = float(net_income) if net_income is not None else 0
+            
+            if revenue == 0:
+                return "Revenue cannot be zero when calculating profit margin."
+            
             profit_margin = (net_income / revenue) * 100
             return f"The Profit Margin for {company_input} in fiscal year {fiscal_year} is {profit_margin:.2f}%"
         
         elif user_query == "what is the debt-to-assets ratio?":
             liabilities = query_financial_data(final_report, {'Year': fiscal_year, 'Company': company_input}, 'Total_liabilities')
             assets = query_financial_data(final_report, {'Year': fiscal_year, 'Company': company_input}, 'Total_assets')
+            
+            liabilities = float(liabilities) if liabilities is not None else 0
+            assets = float(assets) if assets is not None else 0
+            
+            if assets == 0:
+                return "Assets cannot be zero when calculating the debt-to-assets ratio."
+            
             debt_to_assets = (liabilities / assets) * 100
             return f"The Debt-to-Assets Ratio for {company_input} in fiscal year {fiscal_year} is {debt_to_assets:.2f}%"
         
@@ -124,8 +126,14 @@ def financial_chatbot(company_input, fiscal_year, user_query):
         else:
             return "Sorry, I cannot provide information on the requested question."
         
+    except IndexError:
+        return "Data not found for the specified filters."
+    except KeyError as e:
+        return f"Invalid filter key: {e}"
+    except TypeError as e:
+        return f"Type error occurred: {e}"
     except Exception as e:
-        return f"An error occurred: {e}"
+        return f"An unexpected error occurred: {e}"
 
 # Interactive chatbot session
 def interactive_chatbot():

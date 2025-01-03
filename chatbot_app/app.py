@@ -10,6 +10,7 @@ app = Flask(__name__, template_folder='templates', static_folder='static')
 def index():
     return render_template('index.html')
 
+
 @app.route('/chat', methods=['POST'])
 def chat():
     try:
@@ -17,13 +18,15 @@ def chat():
         company_input = request.form['company'].capitalize()
         fiscal_year = int(request.form['year'])
         user_query = request.form['query'].lower()
+        
 
         # Process the query using the chatbot logic
         response = financial_chatbot(company_input, fiscal_year, user_query)
         return {'response': response}
     
-    except ValueError:
-        return {"error": "Invalid year format. Please enter a numeric value."}
+    except ValueError as ve:
+        return {"error": f"Please enter a numeric value: {ve}"}
+    
     except Exception as e:
         return {"error": f"An unexpected error occurred: {e}"}
 
