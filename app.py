@@ -1,10 +1,11 @@
 import sys
 import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'chatbot_app')))
 from flask import Flask, render_template, request
 from chatbot_logic import financial_chatbot
 
 
-app = Flask(__name__, template_folder='templates', static_folder='static')
+app = Flask(__name__, template_folder='chatbot_app/templates', static_folder='chatbot_app/static')
 
 @app.route('/')
 def index():
