@@ -51,7 +51,7 @@ pip install -r requirements.txt
 flask run
 ```
 
-- Access the chatbot in your browser at: **http://127.0.0.1:5000/**
+- Access the chatbot in your browser at: **https://bcg-financial-chatbot.vercel.app/**
 
 ---
 
