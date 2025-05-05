@@ -1,6 +1,3 @@
-myenv/
-
-__pycache__/
 *.py[cod]
 *.pyo
 
@@ -12,3 +9,8 @@ __pycache__/
 .env
 
 .github/
+
+# Folders to ignore
+financial-chatbot/submissions
+financial-chatbot/dataset
+myenv/
